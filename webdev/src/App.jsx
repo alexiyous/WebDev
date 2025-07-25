@@ -3,8 +3,9 @@ import reactLogo from "./assets/react.svg";
 import viteLogo from "/vite.svg";
 import "./App.css";
 
-function Header({count, setCountFunction}) {
+function Header() {
   return (
+    <>
     <div>
       <a href="https://vite.dev" target="_blank">
         <img src={viteLogo} className="logo" alt="Vite Logo" />
@@ -14,23 +15,33 @@ function Header({count, setCountFunction}) {
       </a>
       <div>
           <h1>Learning React With Vite</h1>
-          <div className="card">
+        </div>
+    </div>
+    </>
+  );
+}
+
+function Description({ count, setCountFunction }) {
+  return (
+    <>
+     <div className="card">
             <button onClick={() => setCountFunction((count) => count + 1)}>
               Test Clicking: {count}
             </button>
           </div>
           <p className="read-the-docs">CLICK THOSE LOGOS AND FIND OUT 🤫</p>
-        </div>
-    </div>
-  );
+    </>
+  )
 }
+
 
 function App() {
   const [count, setCount] = useState(0);
 
   return (
     <>
-      <Header count={count} setCountFunction={setCount} ></Header>
+      <Header/>
+      <Description count={count} setCountFunction={setCount} />
     </>
   );
 }
