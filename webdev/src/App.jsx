@@ -2,6 +2,7 @@ import { useState } from "react";
 import reactLogo from "./assets/react.svg";
 import viteLogo from "/vite.svg";
 import "./App.css";
+import { CORE_CONCEPTS } from "./data.js";
 
 const wisdomPhrases = [
   "React is a library for building user interfaces.",
@@ -47,12 +48,37 @@ function Description({ count, setCountFunction }) {
   );
 }
 
+function CoreConcept({ imgSrc, title, description }) {
+  return (
+    <li>
+      <img src={imgSrc} alt="React Core Concepts Logo" className="core-concepts-logo"/>
+      <h3>{title}</h3>
+      <p>{description}</p>
+    </li>
+  );
+}
+
 function App() {
   const [count, setCount] = useState(0);
 
   return (
     <>
       <Header />
+      <main>
+        <section id="core-concepts">
+          <h2>Core Concepts</h2>
+          <ul>
+            {CORE_CONCEPTS.map((concept, index) => (
+              <CoreConcept
+                key={index}
+                imgSrc={concept.image}
+                title={concept.title}
+                description={concept.description}
+              />
+            ))}
+          </ul>
+        </section>
+      </main>
       <Description count={count} setCountFunction={setCount} />
     </>
   );
