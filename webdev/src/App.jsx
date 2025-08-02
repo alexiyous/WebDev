@@ -1,8 +1,9 @@
 import { useState } from "react";
-import reactLogo from "./assets/react.svg";
-import viteLogo from "/vite.svg";
 import "./App.css";
 import { CORE_CONCEPTS } from "./data.js";
+import Header from "./components/Header/Header.jsx";
+import CoreConcept from "./components/CoreConcept.jsx";
+import TabButton from "./components/TabButton.jsx";
 
 const wisdomPhrases = [
   "React is a library for building user interfaces.",
@@ -12,24 +13,6 @@ const wisdomPhrases = [
 
 function getRandomWisdom(length) {
   return Math.floor(Math.random() * length);
-}
-
-function Header() {
-  return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite Logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React Logo" />
-        </a>
-        <div>
-          <h1>Learning React With Vite</h1>
-        </div>
-      </div>
-    </>
-  );
 }
 
 function Description({ count, setCountFunction }) {
@@ -48,22 +31,16 @@ function Description({ count, setCountFunction }) {
   );
 }
 
-function CoreConcept({ imgSrc, title, description }) {
-  return (
-    <li>
-      <img src={imgSrc} alt="React Core Concepts Logo" className="core-concepts-logo"/>
-      <h3>{title}</h3>
-      <p>{description}</p>
-    </li>
-  );
-}
-
 function App() {
   const [count, setCount] = useState(0);
 
+  function handleSelect(selected) {
+    console.log(selected);
+  }
+
   return (
     <>
-      <Header />
+      <Header/>
       <main>
         <section id="core-concepts">
           <h2>Core Concepts</h2>
@@ -77,6 +54,16 @@ function App() {
               />
             ))}
           </ul>
+        </section>
+        <section id="examples">
+          <h2>Examples</h2>
+          <menu>
+            <TabButton onSelect={()=> handleSelect("Components")}>Components</TabButton>
+            <TabButton onSelect={()=> handleSelect("JSX")}>JSX</TabButton>
+            <TabButton onSelect={()=> handleSelect("Props")}>Props</TabButton>
+            <TabButton onSelect={()=> handleSelect("State")}>State</TabButton>
+          </menu>
+          Dynamic Content
         </section>
       </main>
       <Description count={count} setCountFunction={setCount} />
