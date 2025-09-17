@@ -14,7 +14,7 @@ export default function Examples() {
   return (
     <Section title={"Examples"} id="examples">
       <Tabs
-        ButtonsContainer="menu" // define as a string if it's a HTML element, or ButtonsContainer={SomeComponent} if it's a custom component
+        // ButtonsContainer="menu" // define as a string if it's a HTML element, or ButtonsContainer={SomeComponent} if it's a custom component
         buttons={
           <>
             <TabButton
