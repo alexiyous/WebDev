@@ -2,10 +2,11 @@
 //example: <TabButton>Tab 1</TabButton>
 //or
 //<TabButton><img src="logo.png" alt="Logo"/></TabButton>
-export default function TabButton({ children, onSelect, isSelected }) {
+//...props (this syntax means you group all the rest variables/props in this context into 1)
+export default function TabButton({ isSelected, children, ...props }) {
   return (
     <li>
-      <button className={isSelected ? "active" : undefined} onClick={onSelect}>{children}</button>
+      <button className={isSelected ? "active" : undefined} {...props}>{children}</button>
     </li>
   );
 }
